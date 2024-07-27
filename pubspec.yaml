@@ -1,0 +1,53 @@
+name: flanki
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependency_overrides:
+  analyzer: ^6.5.0
+  meta: ^1.14.0
+
+dependencies:
+  auto_route: ^8.3.0
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  injectable: ^2.4.4
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
+  intl: any
+  get_it: any
+  phosphor_flutter: ^2.1.0
+  dartx: ^1.2.0
+  freezed_annotation: any
+  json_annotation: ^4.9.0
+  path_provider: ^2.0.15
+  flutter_bloc: ^8.1.6
+  skeletonizer: ^1.4.1+1
+  shared_preferences: ^2.2.3
+  sm2:
+    path: ./packages/sm2
+  flutter_portal: ^1.1.4
+  fl_chart: ^0.68.0
+  bloc_concurrency: ^0.2.5
+  flutter_localized_locales: ^2.0.5
+  timeago: ^3.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  auto_route_generator: ^8.1.0
+  injectable_generator: ^2.6.2
+  build_runner: any
+  very_good_analysis: any
+  freezed: ^2.5.7
+  json_serializable: any
+  isar_generator: ^3.1.0+1
+
+flutter:
+  uses-material-design: true

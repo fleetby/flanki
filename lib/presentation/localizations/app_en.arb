@@ -1,0 +1,75 @@
+{
+    "@@locale": "en",
+    "appName": "Flanki",
+    "decksDestinationLabel": "Decks",
+    "insightsDestinationLabel": "Insights",
+    "settingsDestinationLabel": "Settings",
+    "createDeckDialogTitle": "Create new deck",
+    "createDeckDialogEditModeTitle": "Edit deck",
+    "createDeckDialogNameFieldHint": "Name",
+    "cancelAction": "Cancel",
+    "createAction": "Create",
+    "saveAction": "Save",
+    "deleteAction": "Delete",
+    "cannotBeBlankOrEmptyError": "Cannot be blank or empty",
+    "deckCardsTabLabel": "Cards",
+    "deckSettingsTabLabel": "Settings",
+    "deckSettingsEditNameAction": "Edit name",
+    "createCardDialogTitle": "Create new card",
+    "createCardDialogEditModeTitle": "Edit card",
+    "createCardDialogFrontTextFieldHint": "Front text",
+    "createCardDialogBackTextFieldHint": "Back text",
+    "couldNotLoadCardsError": "Could not load cards",
+    "deckSettingsDeleteDeckAction": "Delete deck",
+    "deleteDeckDialogTitle": "Delete deck",
+    "deleteDeckDialogContent": "Are you sure you want to delete this deck?",
+    "deckShouldContainAtLeastOneCardError": "Deck should contain at least one card",
+    "rateAgain": "Again",
+    "rateHard": "Hard",
+    "rateGood": "Good",
+    "showAnswerAction": "Show answer",
+    "resetSchedulingAction": "Reset scheduling",
+    "resetDeckSchedulingDialogTitle": "Reset deck scheduling",
+    "resetDeckSchedulingDialogContent": "Are you sure you want to reset scheduling for this deck?",
+    "resetAction": "Reset",
+    "cardDetailsDialogTitle": "Card details",
+    "cardDetailsIntervalLabel": "Interval",
+    "cardDetailsRepetitionsLabel": "Repetitions",
+    "cardDetailsEaseFactorLabel": "Ease factor",
+    "cardDetailsRatedAtLabel": "Rated at",
+    "cardDetailsNextRepetitionAtLabel": "Next repetition at",
+    "allDecksOption": "All decks",
+    "insightsReviewsSection": "Reviews",
+    "systemTheme": "System",
+    "lightTheme": "Light",
+    "darkTheme": "Dark",
+    "settingsLanguageLabel": "Language",
+    "settingsThemeLabel": "Theme",
+    "trainingModeTitle": "Training mode",
+    "trainingModeSubtitle": "Won't affect your progress",
+    "studyFinishedTitle": "It's all for now!",
+    "comeBackIn": "Come back in {duration}",
+    "@studyFinishedSubtitle": {
+        "placeholders": {
+            "duration": {
+                "type": "String"
+            }
+        }
+    },
+    "comeBackLater": "Come back later",
+    "defaultLanguageLabel": "{language} (Default)",
+    "@defaultLanguageLabel": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "unknownLabel": "Unknown",
+    "deckSettingsShuffleCardsOption": "Shuffle cards",
+    "noDataLabel": "No data",
+    "cardStatusInitial": "Initial",
+    "cardStatusLearning": "Learning",
+    "cardStatusReview": "Review",
+    "cardCountsLabel": "Card Counts"
+}

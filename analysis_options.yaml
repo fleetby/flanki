@@ -1,0 +1,13 @@
+include: package:very_good_analysis/analysis_options.yaml
+analyzer:
+  exclude:
+    - 'lib/**/*.g.dart'
+    - 'lib/**/*.freezed.dart'
+    - 'lib/**/*.gr.dart'
+    - 'lib/generated_plugin_registrant.dart'
+    - 'lib/presentation/localizations/*.dart'
+linter:
+  rules:
+    sort_pub_dependencies: false
+    public_member_api_docs: false
+    flutter_style_todos: false
