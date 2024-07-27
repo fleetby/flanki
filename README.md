@@ -28,9 +28,7 @@ Flanki is an open-source, cross-platform spaced repetition application 📚✨ d
     <img width=256 src=".readme-assets/light/insights.png">
     <img width=256 src=".readme-assets/light/select_insight_deck.png">
     <img width=256 src=".readme-assets/light/deck_settings.png">
-    <img width=256 src=".readme-assets/light/edit_recipe_directions.png">
     <img width=256 src=".readme-assets/light/settings.png">
-    <img width=256 src=".readme-assets/light/settings_language.png">
 </div>
 
 ## Installation :hammer_and_wrench:
