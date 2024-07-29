@@ -1,3 +1,5 @@
+import 'package:animated_list_plus/animated_list_plus.dart';
+import 'package:animated_list_plus/transitions.dart';
 import 'package:flanki/presentation/blocs/cards/cards_bloc.dart';
 import 'package:flanki/presentation/blocs/deck/deck_bloc.dart';
 import 'package:flanki/presentation/localizations/app_localizations.dart';
@@ -23,44 +25,49 @@ class DeckCardsFragment extends StatelessWidget {
       },
       child: BlocBuilder<CardsBloc, CardsState>(
         builder: (context, state) => switch (state) {
-          CardsLoaded(:final cards) => ListView.builder(
+          CardsLoaded(:final cards) => ImplicitlyAnimatedList(
               padding: const EdgeInsets.all(16),
-              itemCount: cards.length,
-              itemBuilder: (context, index) {
-                final card = cards[index];
-                return CardItem(
-                  card: card,
-                  onTap: () => showCardDetailsDialog(
-                    context,
-                    interval: card.schedulingInfo?.interval,
-                    repetitions: card.schedulingInfo?.repetitions,
-                    easeFactor: card.schedulingInfo?.easeFactor,
-                    ratedAt: card.schedulingInfo?.ratedAt,
-                    nextRepetitionAt: card.schedulingInfo?.nextRepetitionAt,
-                  ),
-                  onEditTap: () async {
-                    final result = await showCreateCardDialog(
+              items: cards,
+              areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+              itemBuilder: (context, animation, card, index) {
+                return SizeFadeTransition(
+                  sizeFraction: 0.7,
+                  curve: Curves.easeInOut,
+                  animation: animation,
+                  child: CardItem(
+                    card: card,
+                    onTap: () => showCardDetailsDialog(
                       context,
-                      initialData: CreateCardDialogInitialData(
-                        frontText: card.frontNote.text,
-                        backText: card.backNote.text,
-                      ),
-                      edit: true,
-                    );
+                      interval: card.schedulingInfo?.interval,
+                      repetitions: card.schedulingInfo?.repetitions,
+                      easeFactor: card.schedulingInfo?.easeFactor,
+                      ratedAt: card.schedulingInfo?.ratedAt,
+                      nextRepetitionAt: card.schedulingInfo?.nextRepetitionAt,
+                    ),
+                    onEditTap: () async {
+                      final result = await showCreateCardDialog(
+                        context,
+                        initialData: CreateCardDialogInitialData(
+                          frontText: card.frontNote.text,
+                          backText: card.backNote.text,
+                        ),
+                        edit: true,
+                      );
 
-                    if (context.mounted && result != null) {
-                      context.read<CardsBloc>().add(
-                            CardsEdit(
-                              cardId: card.id,
-                              frontText: result.frontText,
-                              backText: result.backText,
-                            ),
-                          );
-                    }
-                  },
-                  onDeleteTap: () => context
-                      .read<CardsBloc>()
-                      .add(CardsDelete(cardId: card.id)),
+                      if (context.mounted && result != null) {
+                        context.read<CardsBloc>().add(
+                              CardsEdit(
+                                cardId: card.id,
+                                frontText: result.frontText,
+                                backText: result.backText,
+                              ),
+                            );
+                      }
+                    },
+                    onDeleteTap: () => context
+                        .read<CardsBloc>()
+                        .add(CardsDelete(cardId: card.id)),
+                  ),
                 );
               },
             ),
