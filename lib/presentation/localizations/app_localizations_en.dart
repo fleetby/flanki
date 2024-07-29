@@ -181,4 +181,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cardCountsLabel => 'Card Counts';
+
+  @override
+  String percentCompleted(int percent) {
+    return '$percent% Completed';
+  }
+
+  @override
+  String learnedOfTotalCards(int learned, int total) {
+    return '$learned/$total Cards';
+  }
 }

@@ -9,11 +9,18 @@ class GetDecksStreamUseCase {
   final DecksRepository _decksRepository;
 
   Stream<List<DeckModel>> call(GetDecksStreamUseCaseParams params) =>
-      _decksRepository.getDecksStream(fireImmediately: params.fireImmediately);
+      _decksRepository.getDecksStream(
+        fireImmediately: params.fireImmediately,
+        includeCardStatusCount: params.includeCardStatusCount,
+      );
 }
 
 class GetDecksStreamUseCaseParams {
-  const GetDecksStreamUseCaseParams({this.fireImmediately = false});
+  const GetDecksStreamUseCaseParams({
+    this.fireImmediately = false,
+    this.includeCardStatusCount = false,
+  });
 
   final bool fireImmediately;
+  final bool includeCardStatusCount;
 }

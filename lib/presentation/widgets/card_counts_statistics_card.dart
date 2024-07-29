@@ -18,9 +18,9 @@ class CardCountsStatisticsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tr = AppLocalizations.of(context);
-    final total = (cardStatusCount?.initialCount ?? 0) +
-        (cardStatusCount?.learningCount ?? 0) +
-        (cardStatusCount?.reviewCount ?? 0);
+    final total = (cardStatusCount?.initial ?? 0) +
+        (cardStatusCount?.learning ?? 0) +
+        (cardStatusCount?.review ?? 0);
     final noData = cardStatusCount == null || total == 0;
     return StatisticsCardBase(
       title: Text(tr.cardCountsLabel),
@@ -37,20 +37,20 @@ class CardCountsStatisticsCard extends StatelessWidget {
                       _getSectionData(
                         context,
                         CardStatus.initial,
-                        cardStatusCount!.initialCount,
-                        cardStatusCount!.initialCount / total,
+                        cardStatusCount!.initial,
+                        cardStatusCount!.initial / total,
                       ),
                       _getSectionData(
                         context,
                         CardStatus.learning,
-                        cardStatusCount!.learningCount,
-                        cardStatusCount!.learningCount / total,
+                        cardStatusCount!.learning,
+                        cardStatusCount!.learning / total,
                       ),
                       _getSectionData(
                         context,
                         CardStatus.review,
-                        cardStatusCount!.reviewCount,
-                        cardStatusCount!.reviewCount / total,
+                        cardStatusCount!.review,
+                        cardStatusCount!.review / total,
                       ),
                     ],
                   ),
@@ -61,17 +61,17 @@ class CardCountsStatisticsCard extends StatelessWidget {
           StatisticsIndicator(
             color: CardStatus.initial.getColor(context),
             title: CardStatus.initial.getLocalizedName(context),
-            value: '${cardStatusCount!.initialCount}',
+            value: '${cardStatusCount!.initial}',
           ),
           StatisticsIndicator(
             color: CardStatus.learning.getColor(context),
             title: CardStatus.learning.getLocalizedName(context),
-            value: '${cardStatusCount!.learningCount}',
+            value: '${cardStatusCount!.learning}',
           ),
           StatisticsIndicator(
             color: CardStatus.review.getColor(context),
             title: CardStatus.review.getLocalizedName(context),
-            value: '${cardStatusCount!.reviewCount}',
+            value: '${cardStatusCount!.review}',
           ),
         ],
       ],

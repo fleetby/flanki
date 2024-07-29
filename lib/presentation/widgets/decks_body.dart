@@ -1,7 +1,9 @@
-import 'package:flanki/presentation/app_router.gr.dart';
+import 'package:animated_list_plus/animated_list_plus.dart';
+import 'package:animated_list_plus/transitions.dart';
 import 'package:flanki/presentation/blocs/decks/decks_bloc.dart';
 import 'package:flanki/presentation/localizations/app_localizations.dart';
 import 'package:flanki/presentation/widgets/create_deck_dialog.dart';
+import 'package:flanki/presentation/widgets/deck_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -20,20 +22,19 @@ class DecksBody extends StatelessWidget {
         centerTitle: true,
       ),
       body: BlocBuilder<DecksBloc, DecksState>(
-        builder: (context, state) => ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemCount: state.decks.length,
-          itemBuilder: (context, index) {
-            final deck = state.decks[index];
-            return Card.outlined(
-              clipBehavior: Clip.antiAlias,
-              child: ListTile(
-                title: Text(
-                  deck.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                onTap: () => DeckRoute(deckId: deck.id).push<void>(context),
+        builder: (context, state) => ImplicitlyAnimatedList(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          items: state.decks,
+          areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+          itemBuilder: (context, animation, deck, index) {
+            return SizeFadeTransition(
+              sizeFraction: 0.7,
+              curve: Curves.easeInOut,
+              animation: animation,
+              child: DeckItem(
+                deck: deck,
+                onPinTap: () =>
+                    context.read<DecksBloc>().add(DecksPin(index: index)),
               ),
             );
           },

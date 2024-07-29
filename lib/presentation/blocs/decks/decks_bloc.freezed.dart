@@ -21,6 +21,7 @@ mixin _$DecksEvent {
     required TResult Function() load,
     required TResult Function(List<DeckModel> decks) set,
     required TResult Function(String name) create,
+    required TResult Function(int index) pin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$DecksEvent {
     TResult? Function()? load,
     TResult? Function(List<DeckModel> decks)? set,
     TResult? Function(String name)? create,
+    TResult? Function(int index)? pin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$DecksEvent {
     TResult Function()? load,
     TResult Function(List<DeckModel> decks)? set,
     TResult Function(String name)? create,
+    TResult Function(int index)? pin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$DecksEvent {
     required TResult Function(DecksLoad value) load,
     required TResult Function(DecksSet value) set,
     required TResult Function(DecksCreate value) create,
+    required TResult Function(DecksPin value) pin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$DecksEvent {
     TResult? Function(DecksLoad value)? load,
     TResult? Function(DecksSet value)? set,
     TResult? Function(DecksCreate value)? create,
+    TResult? Function(DecksPin value)? pin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$DecksEvent {
     TResult Function(DecksLoad value)? load,
     TResult Function(DecksSet value)? set,
     TResult Function(DecksCreate value)? create,
+    TResult Function(DecksPin value)? pin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$DecksLoadImpl implements DecksLoad {
     required TResult Function() load,
     required TResult Function(List<DeckModel> decks) set,
     required TResult Function(String name) create,
+    required TResult Function(int index) pin,
   }) {
     return load();
   }
@@ -137,6 +144,7 @@ class _$DecksLoadImpl implements DecksLoad {
     TResult? Function()? load,
     TResult? Function(List<DeckModel> decks)? set,
     TResult? Function(String name)? create,
+    TResult? Function(int index)? pin,
   }) {
     return load?.call();
   }
@@ -147,6 +155,7 @@ class _$DecksLoadImpl implements DecksLoad {
     TResult Function()? load,
     TResult Function(List<DeckModel> decks)? set,
     TResult Function(String name)? create,
+    TResult Function(int index)? pin,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -161,6 +170,7 @@ class _$DecksLoadImpl implements DecksLoad {
     required TResult Function(DecksLoad value) load,
     required TResult Function(DecksSet value) set,
     required TResult Function(DecksCreate value) create,
+    required TResult Function(DecksPin value) pin,
   }) {
     return load(this);
   }
@@ -171,6 +181,7 @@ class _$DecksLoadImpl implements DecksLoad {
     TResult? Function(DecksLoad value)? load,
     TResult? Function(DecksSet value)? set,
     TResult? Function(DecksCreate value)? create,
+    TResult? Function(DecksPin value)? pin,
   }) {
     return load?.call(this);
   }
@@ -181,6 +192,7 @@ class _$DecksLoadImpl implements DecksLoad {
     TResult Function(DecksLoad value)? load,
     TResult Function(DecksSet value)? set,
     TResult Function(DecksCreate value)? create,
+    TResult Function(DecksPin value)? pin,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -271,6 +283,7 @@ class _$DecksSetImpl implements DecksSet {
     required TResult Function() load,
     required TResult Function(List<DeckModel> decks) set,
     required TResult Function(String name) create,
+    required TResult Function(int index) pin,
   }) {
     return set(decks);
   }
@@ -281,6 +294,7 @@ class _$DecksSetImpl implements DecksSet {
     TResult? Function()? load,
     TResult? Function(List<DeckModel> decks)? set,
     TResult? Function(String name)? create,
+    TResult? Function(int index)? pin,
   }) {
     return set?.call(decks);
   }
@@ -291,6 +305,7 @@ class _$DecksSetImpl implements DecksSet {
     TResult Function()? load,
     TResult Function(List<DeckModel> decks)? set,
     TResult Function(String name)? create,
+    TResult Function(int index)? pin,
     required TResult orElse(),
   }) {
     if (set != null) {
@@ -305,6 +320,7 @@ class _$DecksSetImpl implements DecksSet {
     required TResult Function(DecksLoad value) load,
     required TResult Function(DecksSet value) set,
     required TResult Function(DecksCreate value) create,
+    required TResult Function(DecksPin value) pin,
   }) {
     return set(this);
   }
@@ -315,6 +331,7 @@ class _$DecksSetImpl implements DecksSet {
     TResult? Function(DecksLoad value)? load,
     TResult? Function(DecksSet value)? set,
     TResult? Function(DecksCreate value)? create,
+    TResult? Function(DecksPin value)? pin,
   }) {
     return set?.call(this);
   }
@@ -325,6 +342,7 @@ class _$DecksSetImpl implements DecksSet {
     TResult Function(DecksLoad value)? load,
     TResult Function(DecksSet value)? set,
     TResult Function(DecksCreate value)? create,
+    TResult Function(DecksPin value)? pin,
     required TResult orElse(),
   }) {
     if (set != null) {
@@ -418,6 +436,7 @@ class _$DecksCreateImpl implements DecksCreate {
     required TResult Function() load,
     required TResult Function(List<DeckModel> decks) set,
     required TResult Function(String name) create,
+    required TResult Function(int index) pin,
   }) {
     return create(name);
   }
@@ -428,6 +447,7 @@ class _$DecksCreateImpl implements DecksCreate {
     TResult? Function()? load,
     TResult? Function(List<DeckModel> decks)? set,
     TResult? Function(String name)? create,
+    TResult? Function(int index)? pin,
   }) {
     return create?.call(name);
   }
@@ -438,6 +458,7 @@ class _$DecksCreateImpl implements DecksCreate {
     TResult Function()? load,
     TResult Function(List<DeckModel> decks)? set,
     TResult Function(String name)? create,
+    TResult Function(int index)? pin,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -452,6 +473,7 @@ class _$DecksCreateImpl implements DecksCreate {
     required TResult Function(DecksLoad value) load,
     required TResult Function(DecksSet value) set,
     required TResult Function(DecksCreate value) create,
+    required TResult Function(DecksPin value) pin,
   }) {
     return create(this);
   }
@@ -462,6 +484,7 @@ class _$DecksCreateImpl implements DecksCreate {
     TResult? Function(DecksLoad value)? load,
     TResult? Function(DecksSet value)? set,
     TResult? Function(DecksCreate value)? create,
+    TResult? Function(DecksPin value)? pin,
   }) {
     return create?.call(this);
   }
@@ -472,6 +495,7 @@ class _$DecksCreateImpl implements DecksCreate {
     TResult Function(DecksLoad value)? load,
     TResult Function(DecksSet value)? set,
     TResult Function(DecksCreate value)? create,
+    TResult Function(DecksPin value)? pin,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -490,6 +514,158 @@ abstract class DecksCreate implements DecksEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DecksCreateImplCopyWith<_$DecksCreateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DecksPinImplCopyWith<$Res> {
+  factory _$$DecksPinImplCopyWith(
+          _$DecksPinImpl value, $Res Function(_$DecksPinImpl) then) =
+      __$$DecksPinImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$DecksPinImplCopyWithImpl<$Res>
+    extends _$DecksEventCopyWithImpl<$Res, _$DecksPinImpl>
+    implements _$$DecksPinImplCopyWith<$Res> {
+  __$$DecksPinImplCopyWithImpl(
+      _$DecksPinImpl _value, $Res Function(_$DecksPinImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DecksEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$DecksPinImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DecksPinImpl implements DecksPin {
+  const _$DecksPinImpl({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'DecksEvent.pin(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DecksPinImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  /// Create a copy of DecksEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DecksPinImplCopyWith<_$DecksPinImpl> get copyWith =>
+      __$$DecksPinImplCopyWithImpl<_$DecksPinImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(List<DeckModel> decks) set,
+    required TResult Function(String name) create,
+    required TResult Function(int index) pin,
+  }) {
+    return pin(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(List<DeckModel> decks)? set,
+    TResult? Function(String name)? create,
+    TResult? Function(int index)? pin,
+  }) {
+    return pin?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(List<DeckModel> decks)? set,
+    TResult Function(String name)? create,
+    TResult Function(int index)? pin,
+    required TResult orElse(),
+  }) {
+    if (pin != null) {
+      return pin(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DecksLoad value) load,
+    required TResult Function(DecksSet value) set,
+    required TResult Function(DecksCreate value) create,
+    required TResult Function(DecksPin value) pin,
+  }) {
+    return pin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DecksLoad value)? load,
+    TResult? Function(DecksSet value)? set,
+    TResult? Function(DecksCreate value)? create,
+    TResult? Function(DecksPin value)? pin,
+  }) {
+    return pin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DecksLoad value)? load,
+    TResult Function(DecksSet value)? set,
+    TResult Function(DecksCreate value)? create,
+    TResult Function(DecksPin value)? pin,
+    required TResult orElse(),
+  }) {
+    if (pin != null) {
+      return pin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DecksPin implements DecksEvent {
+  const factory DecksPin({required final int index}) = _$DecksPinImpl;
+
+  int get index;
+
+  /// Create a copy of DecksEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DecksPinImplCopyWith<_$DecksPinImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

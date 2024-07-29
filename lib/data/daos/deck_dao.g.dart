@@ -22,8 +22,13 @@ const DeckDaoSchema = CollectionSchema(
       name: r'name',
       type: IsarType.string,
     ),
-    r'settings': PropertySchema(
+    r'pinned': PropertySchema(
       id: 1,
+      name: r'pinned',
+      type: IsarType.bool,
+    ),
+    r'settings': PropertySchema(
+      id: 2,
       name: r'settings',
       type: IsarType.object,
       target: r'DeckSettingsDao',
@@ -34,7 +39,21 @@ const DeckDaoSchema = CollectionSchema(
   deserialize: _deckDaoDeserialize,
   deserializeProp: _deckDaoDeserializeProp,
   idName: r'id',
-  indexes: {},
+  indexes: {
+    r'pinned': IndexSchema(
+      id: -8913717909547348198,
+      name: r'pinned',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'pinned',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    )
+  },
   links: {
     r'cards': LinkSchema(
       id: -7853192443908479903,
@@ -71,8 +90,9 @@ void _deckDaoSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeString(offsets[0], object.name);
+  writer.writeBool(offsets[1], object.pinned);
   writer.writeObject<DeckSettingsDao>(
-    offsets[1],
+    offsets[2],
     allOffsets,
     DeckSettingsDaoSchema.serialize,
     object.settings,
@@ -89,8 +109,9 @@ DeckDao _deckDaoDeserialize(
     name: reader.readString(offsets[0]),
   );
   object.id = id;
+  object.pinned = reader.readBool(offsets[1]);
   object.settings = reader.readObjectOrNull<DeckSettingsDao>(
-        offsets[1],
+        offsets[2],
         DeckSettingsDaoSchema.deserialize,
         allOffsets,
       ) ??
@@ -108,6 +129,8 @@ P _deckDaoDeserializeProp<P>(
     case 0:
       return (reader.readString(offset)) as P;
     case 1:
+      return (reader.readBool(offset)) as P;
+    case 2:
       return (reader.readObjectOrNull<DeckSettingsDao>(
             offset,
             DeckSettingsDaoSchema.deserialize,
@@ -136,6 +159,14 @@ extension DeckDaoQueryWhereSort on QueryBuilder<DeckDao, DeckDao, QWhere> {
   QueryBuilder<DeckDao, DeckDao, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
+    });
+  }
+
+  QueryBuilder<DeckDao, DeckDao, QAfterWhere> anyPinned() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'pinned'),
+      );
     });
   }
 }
@@ -203,6 +234,50 @@ extension DeckDaoQueryWhere on QueryBuilder<DeckDao, DeckDao, QWhereClause> {
         upper: upperId,
         includeUpper: includeUpper,
       ));
+    });
+  }
+
+  QueryBuilder<DeckDao, DeckDao, QAfterWhereClause> pinnedEqualTo(bool pinned) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'pinned',
+        value: [pinned],
+      ));
+    });
+  }
+
+  QueryBuilder<DeckDao, DeckDao, QAfterWhereClause> pinnedNotEqualTo(
+      bool pinned) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'pinned',
+              lower: [],
+              upper: [pinned],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'pinned',
+              lower: [pinned],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'pinned',
+              lower: [pinned],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'pinned',
+              lower: [],
+              upper: [pinned],
+              includeUpper: false,
+            ));
+      }
     });
   }
 }
@@ -390,6 +465,16 @@ extension DeckDaoQueryFilter
       ));
     });
   }
+
+  QueryBuilder<DeckDao, DeckDao, QAfterFilterCondition> pinnedEqualTo(
+      bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'pinned',
+        value: value,
+      ));
+    });
+  }
 }
 
 extension DeckDaoQueryObject
@@ -473,6 +558,18 @@ extension DeckDaoQuerySortBy on QueryBuilder<DeckDao, DeckDao, QSortBy> {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
+
+  QueryBuilder<DeckDao, DeckDao, QAfterSortBy> sortByPinned() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'pinned', Sort.asc);
+    });
+  }
+
+  QueryBuilder<DeckDao, DeckDao, QAfterSortBy> sortByPinnedDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'pinned', Sort.desc);
+    });
+  }
 }
 
 extension DeckDaoQuerySortThenBy
@@ -500,6 +597,18 @@ extension DeckDaoQuerySortThenBy
       return query.addSortBy(r'name', Sort.desc);
     });
   }
+
+  QueryBuilder<DeckDao, DeckDao, QAfterSortBy> thenByPinned() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'pinned', Sort.asc);
+    });
+  }
+
+  QueryBuilder<DeckDao, DeckDao, QAfterSortBy> thenByPinnedDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'pinned', Sort.desc);
+    });
+  }
 }
 
 extension DeckDaoQueryWhereDistinct
@@ -508,6 +617,12 @@ extension DeckDaoQueryWhereDistinct
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'name', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<DeckDao, DeckDao, QDistinct> distinctByPinned() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'pinned');
     });
   }
 }
@@ -523,6 +638,12 @@ extension DeckDaoQueryProperty
   QueryBuilder<DeckDao, String, QQueryOperations> nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'name');
+    });
+  }
+
+  QueryBuilder<DeckDao, bool, QQueryOperations> pinnedProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'pinned');
     });
   }
 

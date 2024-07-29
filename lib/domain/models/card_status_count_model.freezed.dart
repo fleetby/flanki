@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CardStatusCountModel {
-  int get initialCount => throw _privateConstructorUsedError;
-  int get learningCount => throw _privateConstructorUsedError;
-  int get reviewCount => throw _privateConstructorUsedError;
+  int get initial => throw _privateConstructorUsedError;
+  int get learning => throw _privateConstructorUsedError;
+  int get review => throw _privateConstructorUsedError;
+  int get total => throw _privateConstructorUsedError;
 
   /// Create a copy of CardStatusCountModel
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +34,7 @@ abstract class $CardStatusCountModelCopyWith<$Res> {
           $Res Function(CardStatusCountModel) then) =
       _$CardStatusCountModelCopyWithImpl<$Res, CardStatusCountModel>;
   @useResult
-  $Res call({int initialCount, int learningCount, int reviewCount});
+  $Res call({int initial, int learning, int review, int total});
 }
 
 /// @nodoc
@@ -52,22 +53,27 @@ class _$CardStatusCountModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? initialCount = null,
-    Object? learningCount = null,
-    Object? reviewCount = null,
+    Object? initial = null,
+    Object? learning = null,
+    Object? review = null,
+    Object? total = null,
   }) {
     return _then(_value.copyWith(
-      initialCount: null == initialCount
-          ? _value.initialCount
-          : initialCount // ignore: cast_nullable_to_non_nullable
+      initial: null == initial
+          ? _value.initial
+          : initial // ignore: cast_nullable_to_non_nullable
               as int,
-      learningCount: null == learningCount
-          ? _value.learningCount
-          : learningCount // ignore: cast_nullable_to_non_nullable
+      learning: null == learning
+          ? _value.learning
+          : learning // ignore: cast_nullable_to_non_nullable
               as int,
-      reviewCount: null == reviewCount
-          ? _value.reviewCount
-          : reviewCount // ignore: cast_nullable_to_non_nullable
+      review: null == review
+          ? _value.review
+          : review // ignore: cast_nullable_to_non_nullable
+              as int,
+      total: null == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -81,7 +87,7 @@ abstract class _$$CardStatusCountModelImplCopyWith<$Res>
       __$$CardStatusCountModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int initialCount, int learningCount, int reviewCount});
+  $Res call({int initial, int learning, int review, int total});
 }
 
 /// @nodoc
@@ -97,22 +103,27 @@ class __$$CardStatusCountModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? initialCount = null,
-    Object? learningCount = null,
-    Object? reviewCount = null,
+    Object? initial = null,
+    Object? learning = null,
+    Object? review = null,
+    Object? total = null,
   }) {
     return _then(_$CardStatusCountModelImpl(
-      initialCount: null == initialCount
-          ? _value.initialCount
-          : initialCount // ignore: cast_nullable_to_non_nullable
+      initial: null == initial
+          ? _value.initial
+          : initial // ignore: cast_nullable_to_non_nullable
               as int,
-      learningCount: null == learningCount
-          ? _value.learningCount
-          : learningCount // ignore: cast_nullable_to_non_nullable
+      learning: null == learning
+          ? _value.learning
+          : learning // ignore: cast_nullable_to_non_nullable
               as int,
-      reviewCount: null == reviewCount
-          ? _value.reviewCount
-          : reviewCount // ignore: cast_nullable_to_non_nullable
+      review: null == review
+          ? _value.review
+          : review // ignore: cast_nullable_to_non_nullable
+              as int,
+      total: null == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -122,20 +133,23 @@ class __$$CardStatusCountModelImplCopyWithImpl<$Res>
 
 class _$CardStatusCountModelImpl implements _CardStatusCountModel {
   const _$CardStatusCountModelImpl(
-      {required this.initialCount,
-      required this.learningCount,
-      required this.reviewCount});
+      {required this.initial,
+      required this.learning,
+      required this.review,
+      required this.total});
 
   @override
-  final int initialCount;
+  final int initial;
   @override
-  final int learningCount;
+  final int learning;
   @override
-  final int reviewCount;
+  final int review;
+  @override
+  final int total;
 
   @override
   String toString() {
-    return 'CardStatusCountModel(initialCount: $initialCount, learningCount: $learningCount, reviewCount: $reviewCount)';
+    return 'CardStatusCountModel(initial: $initial, learning: $learning, review: $review, total: $total)';
   }
 
   @override
@@ -143,17 +157,16 @@ class _$CardStatusCountModelImpl implements _CardStatusCountModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardStatusCountModelImpl &&
-            (identical(other.initialCount, initialCount) ||
-                other.initialCount == initialCount) &&
-            (identical(other.learningCount, learningCount) ||
-                other.learningCount == learningCount) &&
-            (identical(other.reviewCount, reviewCount) ||
-                other.reviewCount == reviewCount));
+            (identical(other.initial, initial) || other.initial == initial) &&
+            (identical(other.learning, learning) ||
+                other.learning == learning) &&
+            (identical(other.review, review) || other.review == review) &&
+            (identical(other.total, total) || other.total == total));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, initialCount, learningCount, reviewCount);
+      Object.hash(runtimeType, initial, learning, review, total);
 
   /// Create a copy of CardStatusCountModel
   /// with the given fields replaced by the non-null parameter values.
@@ -168,16 +181,19 @@ class _$CardStatusCountModelImpl implements _CardStatusCountModel {
 
 abstract class _CardStatusCountModel implements CardStatusCountModel {
   const factory _CardStatusCountModel(
-      {required final int initialCount,
-      required final int learningCount,
-      required final int reviewCount}) = _$CardStatusCountModelImpl;
+      {required final int initial,
+      required final int learning,
+      required final int review,
+      required final int total}) = _$CardStatusCountModelImpl;
 
   @override
-  int get initialCount;
+  int get initial;
   @override
-  int get learningCount;
+  int get learning;
   @override
-  int get reviewCount;
+  int get review;
+  @override
+  int get total;
 
   /// Create a copy of CardStatusCountModel
   /// with the given fields replaced by the non-null parameter values.

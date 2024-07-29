@@ -438,6 +438,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Card Counts'**
   String get cardCountsLabel;
+
+  /// No description provided for @percentCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% Completed'**
+  String percentCompleted(int percent);
+
+  /// No description provided for @learnedOfTotalCards.
+  ///
+  /// In en, this message translates to:
+  /// **'{learned}/{total} Cards'**
+  String learnedOfTotalCards(int learned, int total);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

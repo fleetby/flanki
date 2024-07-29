@@ -49,6 +49,7 @@ import 'package:flanki/domain/use_cases/get_study_cards_use_case.dart' as _i171;
 import 'package:flanki/domain/use_cases/get_theme_changed_stream_use_case.dart'
     as _i758;
 import 'package:flanki/domain/use_cases/get_theme_use_case.dart' as _i698;
+import 'package:flanki/domain/use_cases/pin_deck_use_case.dart' as _i622;
 import 'package:flanki/domain/use_cases/rate_card_use_case.dart' as _i404;
 import 'package:flanki/domain/use_cases/reset_schedulings_use_case.dart'
     as _i373;
@@ -56,6 +57,7 @@ import 'package:flanki/domain/use_cases/restore_previous_card_scheduling_use_cas
     as _i233;
 import 'package:flanki/domain/use_cases/set_locale_use_case.dart' as _i25;
 import 'package:flanki/domain/use_cases/set_theme_use_case.dart' as _i542;
+import 'package:flanki/domain/use_cases/unpin_deck_use_case.dart' as _i175;
 import 'package:flanki/presentation/app_router.dart' as _i296;
 import 'package:flanki/presentation/blocs/cards/cards_bloc.dart' as _i553;
 import 'package:flanki/presentation/blocs/deck/deck_bloc.dart' as _i1055;
@@ -142,6 +144,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i388.GetDecksStreamUseCase(gh<_i906.DecksRepository>()));
     gh.singleton<_i776.GetDeckStreamUseCase>(
         () => _i776.GetDeckStreamUseCase(gh<_i906.DecksRepository>()));
+    gh.singleton<_i622.PinDeckUseCase>(
+        () => _i622.PinDeckUseCase(gh<_i906.DecksRepository>()));
+    gh.singleton<_i175.UnpinDeckUseCase>(
+        () => _i175.UnpinDeckUseCase(gh<_i906.DecksRepository>()));
     gh.singleton<_i764.DeleteDeckUseCase>(() => _i764.DeleteDeckUseCase(
           gh<_i906.DecksRepository>(),
           gh<_i620.CardsRepository>(),
@@ -195,6 +201,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i649.DecksBloc>(() => _i649.DecksBloc(
           gh<_i178.CreateDeckUseCase>(),
           gh<_i388.GetDecksStreamUseCase>(),
+          gh<_i622.PinDeckUseCase>(),
+          gh<_i175.UnpinDeckUseCase>(),
         ));
     gh.factory<_i1055.DeckBloc>(() => _i1055.DeckBloc(
           gh<_i776.GetDeckStreamUseCase>(),

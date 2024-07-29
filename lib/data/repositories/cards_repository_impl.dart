@@ -193,9 +193,10 @@ class CardsRepositoryImpl implements CardsRepository {
           )
           .map(
             (groups) => CardStatusCountModel(
-              initialCount: groups[CardStatus.initial]?.length ?? 0,
-              learningCount: groups[CardStatus.learning]?.length ?? 0,
-              reviewCount: groups[CardStatus.review]?.length ?? 0,
+              initial: groups[CardStatus.initial]?.length ?? 0,
+              learning: groups[CardStatus.learning]?.length ?? 0,
+              review: groups[CardStatus.review]?.length ?? 0,
+              total: groups.values.sumBy((e) => e.length),
             ),
           );
 }

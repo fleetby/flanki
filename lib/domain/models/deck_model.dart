@@ -1,3 +1,4 @@
+import 'package:flanki/domain/models/card_status_count_model.dart';
 import 'package:flanki/domain/models/deck_settings_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,5 +10,7 @@ class DeckModel with _$DeckModel {
     required int id,
     required String name,
     required DeckSettingsModel settings,
+    required bool pinned,
+    CardStatusCountModel? cardStatusCount,
   }) = _DeckModel;
 }

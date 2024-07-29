@@ -19,6 +19,9 @@ mixin _$DeckModel {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DeckSettingsModel get settings => throw _privateConstructorUsedError;
+  bool get pinned => throw _privateConstructorUsedError;
+  CardStatusCountModel? get cardStatusCount =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of DeckModel
   /// with the given fields replaced by the non-null parameter values.
@@ -32,9 +35,15 @@ abstract class $DeckModelCopyWith<$Res> {
   factory $DeckModelCopyWith(DeckModel value, $Res Function(DeckModel) then) =
       _$DeckModelCopyWithImpl<$Res, DeckModel>;
   @useResult
-  $Res call({int id, String name, DeckSettingsModel settings});
+  $Res call(
+      {int id,
+      String name,
+      DeckSettingsModel settings,
+      bool pinned,
+      CardStatusCountModel? cardStatusCount});
 
   $DeckSettingsModelCopyWith<$Res> get settings;
+  $CardStatusCountModelCopyWith<$Res>? get cardStatusCount;
 }
 
 /// @nodoc
@@ -55,6 +64,8 @@ class _$DeckModelCopyWithImpl<$Res, $Val extends DeckModel>
     Object? id = null,
     Object? name = null,
     Object? settings = null,
+    Object? pinned = null,
+    Object? cardStatusCount = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,6 +80,14 @@ class _$DeckModelCopyWithImpl<$Res, $Val extends DeckModel>
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
               as DeckSettingsModel,
+      pinned: null == pinned
+          ? _value.pinned
+          : pinned // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cardStatusCount: freezed == cardStatusCount
+          ? _value.cardStatusCount
+          : cardStatusCount // ignore: cast_nullable_to_non_nullable
+              as CardStatusCountModel?,
     ) as $Val);
   }
 
@@ -81,6 +100,21 @@ class _$DeckModelCopyWithImpl<$Res, $Val extends DeckModel>
       return _then(_value.copyWith(settings: value) as $Val);
     });
   }
+
+  /// Create a copy of DeckModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CardStatusCountModelCopyWith<$Res>? get cardStatusCount {
+    if (_value.cardStatusCount == null) {
+      return null;
+    }
+
+    return $CardStatusCountModelCopyWith<$Res>(_value.cardStatusCount!,
+        (value) {
+      return _then(_value.copyWith(cardStatusCount: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -91,10 +125,17 @@ abstract class _$$DeckModelImplCopyWith<$Res>
       __$$DeckModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, DeckSettingsModel settings});
+  $Res call(
+      {int id,
+      String name,
+      DeckSettingsModel settings,
+      bool pinned,
+      CardStatusCountModel? cardStatusCount});
 
   @override
   $DeckSettingsModelCopyWith<$Res> get settings;
+  @override
+  $CardStatusCountModelCopyWith<$Res>? get cardStatusCount;
 }
 
 /// @nodoc
@@ -113,6 +154,8 @@ class __$$DeckModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? settings = null,
+    Object? pinned = null,
+    Object? cardStatusCount = freezed,
   }) {
     return _then(_$DeckModelImpl(
       id: null == id
@@ -127,6 +170,14 @@ class __$$DeckModelImplCopyWithImpl<$Res>
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
               as DeckSettingsModel,
+      pinned: null == pinned
+          ? _value.pinned
+          : pinned // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cardStatusCount: freezed == cardStatusCount
+          ? _value.cardStatusCount
+          : cardStatusCount // ignore: cast_nullable_to_non_nullable
+              as CardStatusCountModel?,
     ));
   }
 }
@@ -135,7 +186,11 @@ class __$$DeckModelImplCopyWithImpl<$Res>
 
 class _$DeckModelImpl implements _DeckModel {
   const _$DeckModelImpl(
-      {required this.id, required this.name, required this.settings});
+      {required this.id,
+      required this.name,
+      required this.settings,
+      required this.pinned,
+      this.cardStatusCount});
 
   @override
   final int id;
@@ -143,10 +198,14 @@ class _$DeckModelImpl implements _DeckModel {
   final String name;
   @override
   final DeckSettingsModel settings;
+  @override
+  final bool pinned;
+  @override
+  final CardStatusCountModel? cardStatusCount;
 
   @override
   String toString() {
-    return 'DeckModel(id: $id, name: $name, settings: $settings)';
+    return 'DeckModel(id: $id, name: $name, settings: $settings, pinned: $pinned, cardStatusCount: $cardStatusCount)';
   }
 
   @override
@@ -157,11 +216,15 @@ class _$DeckModelImpl implements _DeckModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.settings, settings) ||
-                other.settings == settings));
+                other.settings == settings) &&
+            (identical(other.pinned, pinned) || other.pinned == pinned) &&
+            (identical(other.cardStatusCount, cardStatusCount) ||
+                other.cardStatusCount == cardStatusCount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, settings);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, settings, pinned, cardStatusCount);
 
   /// Create a copy of DeckModel
   /// with the given fields replaced by the non-null parameter values.
@@ -176,7 +239,9 @@ abstract class _DeckModel implements DeckModel {
   const factory _DeckModel(
       {required final int id,
       required final String name,
-      required final DeckSettingsModel settings}) = _$DeckModelImpl;
+      required final DeckSettingsModel settings,
+      required final bool pinned,
+      final CardStatusCountModel? cardStatusCount}) = _$DeckModelImpl;
 
   @override
   int get id;
@@ -184,6 +249,10 @@ abstract class _DeckModel implements DeckModel {
   String get name;
   @override
   DeckSettingsModel get settings;
+  @override
+  bool get pinned;
+  @override
+  CardStatusCountModel? get cardStatusCount;
 
   /// Create a copy of DeckModel
   /// with the given fields replaced by the non-null parameter values.

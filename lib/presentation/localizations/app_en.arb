@@ -71,5 +71,24 @@
     "cardStatusInitial": "Initial",
     "cardStatusLearning": "Learning",
     "cardStatusReview": "Review",
-    "cardCountsLabel": "Card Counts"
+    "cardCountsLabel": "Card Counts",
+    "percentCompleted": "{percent}% Completed",
+    "@percentCompleted": {
+        "placeholders": {
+            "percent": {
+                "type": "int"
+            }
+        }
+    },
+    "learnedOfTotalCards": "{learned}/{total} Cards",
+    "@learnedOfTotalCards": {
+        "placeholders": {
+            "learned": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    }
 }

@@ -16,4 +16,7 @@ class DeckDao {
   final cards = IsarLinks<CardDao>();
 
   DeckSettingsDao settings = DeckSettingsDao();
+
+  @Index()
+  bool pinned = false;
 }

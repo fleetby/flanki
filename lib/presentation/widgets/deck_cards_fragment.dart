@@ -24,7 +24,7 @@ class DeckCardsFragment extends StatelessWidget {
       child: BlocBuilder<CardsBloc, CardsState>(
         builder: (context, state) => switch (state) {
           CardsLoaded(:final cards) => ListView.builder(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(16),
               itemCount: cards.length,
               itemBuilder: (context, index) {
                 final card = cards[index];
