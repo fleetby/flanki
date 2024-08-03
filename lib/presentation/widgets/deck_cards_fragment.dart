@@ -26,7 +26,10 @@ class DeckCardsFragment extends StatelessWidget {
       child: BlocBuilder<CardsBloc, CardsState>(
         builder: (context, state) => switch (state) {
           CardsLoaded(:final cards) => ImplicitlyAnimatedList(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
               items: cards,
               areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
               itemBuilder: (context, animation, card, index) {

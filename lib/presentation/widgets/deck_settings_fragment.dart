@@ -15,11 +15,30 @@ class DeckSettingsFragment extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DeckBloc, DeckState>(
       builder: (context, state) => ListView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
+        ),
         children: const [
-          _ShuffleCardsOption(),
-          _EditDeckNameOption(),
-          _ResetDeckSchedulingOption(),
-          _DeleteDeckOption(),
+          Card.outlined(
+            margin: EdgeInsets.zero,
+            child: Column(
+              children: [
+                _ShuffleCardsOption(),
+                _ResetDeckSchedulingOption(),
+              ],
+            ),
+          ),
+          SizedBox(height: 8),
+          Card.outlined(
+            margin: EdgeInsets.zero,
+            child: Column(
+              children: [
+                _RenameDeckOption(),
+                _DeleteDeckOption(),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -79,15 +98,15 @@ class _ResetDeckSchedulingOption extends StatelessWidget {
   }
 }
 
-class _EditDeckNameOption extends StatelessWidget {
-  const _EditDeckNameOption();
+class _RenameDeckOption extends StatelessWidget {
+  const _RenameDeckOption();
 
   @override
   Widget build(BuildContext context) {
     final tr = AppLocalizations.of(context);
     return ListTile(
       leading: const Icon(PhosphorIconsRegular.pencil),
-      title: Text(tr.deckSettingsEditNameAction),
+      title: Text(tr.deckSettingsRenameAction),
       onTap: () async {
         final state = context.read<DeckBloc>().state;
         if (state case DeckLoaded(:final deck)) {

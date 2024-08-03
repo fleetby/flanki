@@ -175,11 +175,11 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get deckSettingsTabLabel;
 
-  /// No description provided for @deckSettingsEditNameAction.
+  /// No description provided for @deckSettingsRenameAction.
   ///
   /// In en, this message translates to:
-  /// **'Edit name'**
-  String get deckSettingsEditNameAction;
+  /// **'Rename deck'**
+  String get deckSettingsRenameAction;
 
   /// No description provided for @createCardDialogTitle.
   ///

@@ -14,7 +14,7 @@
     "cannotBeBlankOrEmptyError": "Cannot be blank or empty",
     "deckCardsTabLabel": "Cards",
     "deckSettingsTabLabel": "Settings",
-    "deckSettingsEditNameAction": "Edit name",
+    "deckSettingsRenameAction": "Rename deck",
     "createCardDialogTitle": "Create new card",
     "createCardDialogEditModeTitle": "Edit card",
     "createCardDialogFrontTextFieldHint": "Front text",

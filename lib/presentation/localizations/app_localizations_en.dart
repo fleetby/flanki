@@ -47,7 +47,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deckSettingsTabLabel => 'Settings';
 
   @override
-  String get deckSettingsEditNameAction => 'Edit name';
+  String get deckSettingsRenameAction => 'Rename deck';
 
   @override
   String get createCardDialogTitle => 'Create new card';
