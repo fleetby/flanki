@@ -94,10 +94,10 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.singleton<_i296.AppRouter>(() => _i296.AppRouter());
-    gh.singleton<_i367.SettingsRepository>(
-        () => _i392.SettingsRepositoryImpl(gh<_i460.SharedPreferences>()));
     gh.singleton<_i620.CardsRepository>(
         () => _i891.CardsRepositoryImpl(gh<_i338.Isar>()));
+    gh.singleton<_i367.SettingsRepository>(
+        () => _i392.SettingsRepositoryImpl(gh<_i460.SharedPreferences>()));
     gh.singleton<_i212.SchedulingLogsRepository>(
         () => _i922.SchedulingLogsRepositoryImpl(gh<_i338.Isar>()));
     gh.singleton<_i906.DecksRepository>(
