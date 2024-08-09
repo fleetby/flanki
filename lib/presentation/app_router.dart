@@ -21,5 +21,6 @@ class AppRouter extends $AppRouter {
         ),
         AutoRoute(page: DeckRoute.page),
         AutoRoute(page: StudyRoute.page),
+        AutoRoute(page: CreateCardRoute.page),
       ];
 }

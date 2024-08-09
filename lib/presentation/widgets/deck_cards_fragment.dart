@@ -1,11 +1,11 @@
 import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:animated_list_plus/transitions.dart';
+import 'package:flanki/presentation/app_router.gr.dart';
 import 'package:flanki/presentation/blocs/cards/cards_bloc.dart';
 import 'package:flanki/presentation/blocs/deck/deck_bloc.dart';
 import 'package:flanki/presentation/localizations/app_localizations.dart';
 import 'package:flanki/presentation/widgets/card_details_dialog.dart';
 import 'package:flanki/presentation/widgets/card_item.dart';
-import 'package:flanki/presentation/widgets/create_card_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,24 +48,8 @@ class DeckCardsFragment extends StatelessWidget {
                       nextRepetitionAt: card.schedulingInfo?.nextRepetitionAt,
                     ),
                     onEditTap: () async {
-                      final result = await showCreateCardDialog(
-                        context,
-                        initialData: CreateCardDialogInitialData(
-                          frontText: card.frontNote.text,
-                          backText: card.backNote.text,
-                        ),
-                        edit: true,
-                      );
-
-                      if (context.mounted && result != null) {
-                        context.read<CardsBloc>().add(
-                              CardsEdit(
-                                cardId: card.id,
-                                frontText: result.frontText,
-                                backText: result.backText,
-                              ),
-                            );
-                      }
+                      await CreateCardRoute(deckId: null, cardId: card.id)
+                          .push<void>(context);
                     },
                     onDeleteTap: () => context
                         .read<CardsBloc>()

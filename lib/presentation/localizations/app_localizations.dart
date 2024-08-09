@@ -183,29 +183,35 @@ abstract class AppLocalizations {
   /// **'Rename deck'**
   String get deckSettingsRenameAction;
 
-  /// No description provided for @createCardDialogTitle.
+  /// No description provided for @createCardTitle.
   ///
   /// In en, this message translates to:
-  /// **'Create new card'**
-  String get createCardDialogTitle;
+  /// **'Create card'**
+  String get createCardTitle;
 
-  /// No description provided for @createCardDialogEditModeTitle.
+  /// No description provided for @createCardEditModeTitle.
   ///
   /// In en, this message translates to:
   /// **'Edit card'**
-  String get createCardDialogEditModeTitle;
+  String get createCardEditModeTitle;
 
-  /// No description provided for @createCardDialogFrontTextFieldHint.
+  /// No description provided for @createCardFrontTextFieldHint.
   ///
   /// In en, this message translates to:
   /// **'Front text'**
-  String get createCardDialogFrontTextFieldHint;
+  String get createCardFrontTextFieldHint;
 
-  /// No description provided for @createCardDialogBackTextFieldHint.
+  /// No description provided for @createCardBackTextFieldHint.
   ///
   /// In en, this message translates to:
   /// **'Back text'**
-  String get createCardDialogBackTextFieldHint;
+  String get createCardBackTextFieldHint;
+
+  /// No description provided for @createCardCloseAfterSaveOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Close after save'**
+  String get createCardCloseAfterSaveOption;
 
   /// No description provided for @couldNotLoadCardsError.
   ///

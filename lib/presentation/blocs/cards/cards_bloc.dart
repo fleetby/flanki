@@ -5,6 +5,7 @@ import 'package:flanki/domain/use_cases/create_card_use_case.dart';
 import 'package:flanki/domain/use_cases/delete_card_use_case.dart';
 import 'package:flanki/domain/use_cases/edit_card_use_case.dart';
 import 'package:flanki/domain/use_cases/get_cards_stream_use_case.dart';
+import 'package:flanki/presentation/view_models/card_item_vm.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -83,7 +84,7 @@ class CardsBloc extends Bloc<CardsEvent, CardsState> {
     emit(
       CardsLoaded(
         deckId: event.deckId,
-        cards: event.cards,
+        cards: event.cards.map(CardItemVm.fromModel).toList(),
       ),
     );
   }

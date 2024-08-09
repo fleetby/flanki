@@ -52,16 +52,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deckSettingsRenameAction => 'Rename deck';
 
   @override
-  String get createCardDialogTitle => 'Create new card';
+  String get createCardTitle => 'Create card';
 
   @override
-  String get createCardDialogEditModeTitle => 'Edit card';
+  String get createCardEditModeTitle => 'Edit card';
 
   @override
-  String get createCardDialogFrontTextFieldHint => 'Front text';
+  String get createCardFrontTextFieldHint => 'Front text';
 
   @override
-  String get createCardDialogBackTextFieldHint => 'Back text';
+  String get createCardBackTextFieldHint => 'Back text';
+
+  @override
+  String get createCardCloseAfterSaveOption => 'Close after save';
 
   @override
   String get couldNotLoadCardsError => 'Could not load cards';

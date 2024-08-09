@@ -1,4 +1,4 @@
-import 'package:flanki/domain/models/card_model.dart';
+import 'package:flanki/presentation/view_models/card_item_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -11,7 +11,7 @@ class CardItem extends StatelessWidget {
     super.key,
   });
 
-  final CardModel card;
+  final CardItemVm card;
   final VoidCallback onEditTap;
   final VoidCallback onDeleteTap;
   final VoidCallback onTap;
@@ -23,8 +23,8 @@ class CardItem extends StatelessWidget {
       child: InkWell(
         child: ListTile(
           onTap: onTap,
-          title: Text(card.frontNote.text),
-          subtitle: Text(card.backNote.text),
+          title: Text(card.frontPlainText),
+          subtitle: Text(card.backPlainText),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

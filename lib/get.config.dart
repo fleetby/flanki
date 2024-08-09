@@ -35,6 +35,7 @@ import 'package:flanki/domain/use_cases/get_card_rates_summary_stream_use_case.d
     as _i628;
 import 'package:flanki/domain/use_cases/get_card_status_count_use_case.dart'
     as _i450;
+import 'package:flanki/domain/use_cases/get_card_use_case.dart' as _i335;
 import 'package:flanki/domain/use_cases/get_cards_stream_use_case.dart'
     as _i1033;
 import 'package:flanki/domain/use_cases/get_deck_stream_use_case.dart' as _i776;
@@ -60,6 +61,8 @@ import 'package:flanki/domain/use_cases/set_theme_use_case.dart' as _i542;
 import 'package:flanki/domain/use_cases/unpin_deck_use_case.dart' as _i175;
 import 'package:flanki/presentation/app_router.dart' as _i296;
 import 'package:flanki/presentation/blocs/cards/cards_bloc.dart' as _i553;
+import 'package:flanki/presentation/blocs/create_card/create_card_bloc.dart'
+    as _i861;
 import 'package:flanki/presentation/blocs/deck/deck_bloc.dart' as _i1055;
 import 'package:flanki/presentation/blocs/decks/decks_bloc.dart' as _i649;
 import 'package:flanki/presentation/blocs/insights/insights_bloc.dart' as _i146;
@@ -115,6 +118,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i450.GetCardStatusCountStreamUseCase(gh<_i620.CardsRepository>()));
     gh.singleton<_i575.GetNextRepetitionDateUseCase>(
         () => _i575.GetNextRepetitionDateUseCase(gh<_i620.CardsRepository>()));
+    gh.singleton<_i335.GetCardUseCase>(
+        () => _i335.GetCardUseCase(gh<_i620.CardsRepository>()));
     gh.singleton<_i233.RestorePreviousCardSchedulingUseCase>(
         () => _i233.RestorePreviousCardSchedulingUseCase(
               gh<_i212.SchedulingLogsRepository>(),
@@ -179,6 +184,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i620.CardsRepository>(),
           gh<_i727.SchedulingService>(),
           gh<_i212.SchedulingLogsRepository>(),
+        ));
+    gh.factory<_i861.CreateCardBloc>(() => _i861.CreateCardBloc(
+          gh<_i335.GetCardUseCase>(),
+          gh<_i332.CreateCardUseCase>(),
+          gh<_i406.EditCardUseCase>(),
         ));
     gh.factory<_i507.SettingsBloc>(() => _i507.SettingsBloc(
           gh<_i698.GetThemeUseCase>(),

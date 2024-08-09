@@ -6,7 +6,7 @@ sealed class CardsState with _$CardsState {
   const factory CardsState.loading() = CardsLoading;
   const factory CardsState.loaded({
     required int deckId,
-    required List<CardModel> cards,
+    required List<CardItemVm> cards,
   }) = CardsLoaded;
   const factory CardsState.error() = CardsError;
 }

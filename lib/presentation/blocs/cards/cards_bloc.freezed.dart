@@ -953,7 +953,7 @@ mixin _$CardsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int deckId, List<CardModel> cards) loaded,
+    required TResult Function(int deckId, List<CardItemVm> cards) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -961,7 +961,7 @@ mixin _$CardsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int deckId, List<CardModel> cards)? loaded,
+    TResult? Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -969,7 +969,7 @@ mixin _$CardsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int deckId, List<CardModel> cards)? loaded,
+    TResult Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -1065,7 +1065,7 @@ class _$CardsInitialImpl implements CardsInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int deckId, List<CardModel> cards) loaded,
+    required TResult Function(int deckId, List<CardItemVm> cards) loaded,
     required TResult Function() error,
   }) {
     return initial();
@@ -1076,7 +1076,7 @@ class _$CardsInitialImpl implements CardsInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int deckId, List<CardModel> cards)? loaded,
+    TResult? Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult? Function()? error,
   }) {
     return initial?.call();
@@ -1087,7 +1087,7 @@ class _$CardsInitialImpl implements CardsInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int deckId, List<CardModel> cards)? loaded,
+    TResult Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -1182,7 +1182,7 @@ class _$CardsLoadingImpl implements CardsLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int deckId, List<CardModel> cards) loaded,
+    required TResult Function(int deckId, List<CardItemVm> cards) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -1193,7 +1193,7 @@ class _$CardsLoadingImpl implements CardsLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int deckId, List<CardModel> cards)? loaded,
+    TResult? Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -1204,7 +1204,7 @@ class _$CardsLoadingImpl implements CardsLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int deckId, List<CardModel> cards)? loaded,
+    TResult Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -1262,7 +1262,7 @@ abstract class _$$CardsLoadedImplCopyWith<$Res> {
           _$CardsLoadedImpl value, $Res Function(_$CardsLoadedImpl) then) =
       __$$CardsLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int deckId, List<CardModel> cards});
+  $Res call({int deckId, List<CardItemVm> cards});
 }
 
 /// @nodoc
@@ -1289,7 +1289,7 @@ class __$$CardsLoadedImplCopyWithImpl<$Res>
       cards: null == cards
           ? _value._cards
           : cards // ignore: cast_nullable_to_non_nullable
-              as List<CardModel>,
+              as List<CardItemVm>,
     ));
   }
 }
@@ -1298,14 +1298,14 @@ class __$$CardsLoadedImplCopyWithImpl<$Res>
 
 class _$CardsLoadedImpl implements CardsLoaded {
   const _$CardsLoadedImpl(
-      {required this.deckId, required final List<CardModel> cards})
+      {required this.deckId, required final List<CardItemVm> cards})
       : _cards = cards;
 
   @override
   final int deckId;
-  final List<CardModel> _cards;
+  final List<CardItemVm> _cards;
   @override
-  List<CardModel> get cards {
+  List<CardItemVm> get cards {
     if (_cards is EqualUnmodifiableListView) return _cards;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cards);
@@ -1342,7 +1342,7 @@ class _$CardsLoadedImpl implements CardsLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int deckId, List<CardModel> cards) loaded,
+    required TResult Function(int deckId, List<CardItemVm> cards) loaded,
     required TResult Function() error,
   }) {
     return loaded(deckId, cards);
@@ -1353,7 +1353,7 @@ class _$CardsLoadedImpl implements CardsLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int deckId, List<CardModel> cards)? loaded,
+    TResult? Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult? Function()? error,
   }) {
     return loaded?.call(deckId, cards);
@@ -1364,7 +1364,7 @@ class _$CardsLoadedImpl implements CardsLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int deckId, List<CardModel> cards)? loaded,
+    TResult Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -1415,10 +1415,10 @@ class _$CardsLoadedImpl implements CardsLoaded {
 abstract class CardsLoaded implements CardsState {
   const factory CardsLoaded(
       {required final int deckId,
-      required final List<CardModel> cards}) = _$CardsLoadedImpl;
+      required final List<CardItemVm> cards}) = _$CardsLoadedImpl;
 
   int get deckId;
-  List<CardModel> get cards;
+  List<CardItemVm> get cards;
 
   /// Create a copy of CardsState
   /// with the given fields replaced by the non-null parameter values.
@@ -1470,7 +1470,7 @@ class _$CardsErrorImpl implements CardsError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int deckId, List<CardModel> cards) loaded,
+    required TResult Function(int deckId, List<CardItemVm> cards) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -1481,7 +1481,7 @@ class _$CardsErrorImpl implements CardsError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int deckId, List<CardModel> cards)? loaded,
+    TResult? Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -1492,7 +1492,7 @@ class _$CardsErrorImpl implements CardsError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int deckId, List<CardModel> cards)? loaded,
+    TResult Function(int deckId, List<CardItemVm> cards)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {

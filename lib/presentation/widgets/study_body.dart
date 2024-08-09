@@ -1,14 +1,18 @@
 import 'package:flanki/domain/constants/card_rate.dart';
+import 'package:flanki/presentation/app_router.gr.dart';
 import 'package:flanki/presentation/blocs/study/study_bloc.dart';
 import 'package:flanki/presentation/extensions/card_rate_x.dart';
 import 'package:flanki/presentation/extensions/theme_data_x.dart';
 import 'package:flanki/presentation/localizations/app_localizations.dart';
-import 'package:flanki/presentation/widgets/create_card_dialog.dart';
+import 'package:flanki/presentation/widgets/read_only_rich_content.dart';
 import 'package:flanki/presentation/widgets/statistics_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+const _frontKey = Key('front');
+const _backKey = Key('back');
 
 class StudyBody extends StatelessWidget {
   const StudyBody({
@@ -17,7 +21,6 @@ class StudyBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<StudyBloc, StudyState>(
       builder: (context, state) => Material(
         child: AnimatedSwitcher(
@@ -29,8 +32,9 @@ class StudyBody extends StatelessWidget {
           child: switch (state) {
             final StudyOngoing state => Scaffold(
                 appBar: AppBar(
-                  title:
-                      Text('${state.currentCardIndex + 1}/${state.cards.length}'),
+                  title: Text(
+                    '${state.currentCardIndex + 1}/${state.cards.length}',
+                  ),
                   bottom: PreferredSize(
                     preferredSize: const Size.fromHeight(4),
                     child: LinearProgressIndicator(
@@ -41,7 +45,8 @@ class StudyBody extends StatelessWidget {
                     if (state.currentCardIndex >= 1)
                       IconButton(
                         key: UniqueKey(),
-                        constraints: BoxConstraints.tight(const Size.square(56)),
+                        constraints:
+                            BoxConstraints.tight(const Size.square(56)),
                         onPressed: () => context
                             .read<StudyBloc>()
                             .add(const StudyRestorePreviousCard()),
@@ -49,53 +54,47 @@ class StudyBody extends StatelessWidget {
                       ),
                     IconButton(
                       constraints: BoxConstraints.tight(const Size.square(56)),
-                      onPressed: () async {
-                        final result = await showCreateCardDialog(
-                          context,
-                          initialData: CreateCardDialogInitialData(
-                            frontText: state.currentCard!.frontNote.text,
-                            backText: state.currentCard!.backNote.text,
-                          ),
-                          edit: true,
-                        );
-        
-                        if (context.mounted && result != null) {
-                          context.read<StudyBloc>().add(
-                                StudyEditCard(
-                                  cardId: state.currentCard!.id,
-                                  frontText: result.frontText,
-                                  backText: result.backText,
-                                ),
-                              );
-                        }
-                      },
+                      onPressed: () => CreateCardRoute(
+                        deckId: null,
+                        cardId: state.currentCard!.id,
+                      ).push<void>(context),
                       icon: const Icon(PhosphorIconsRegular.pencil),
                     ),
                   ],
                 ),
-                body: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 50),
-                    child: Column(
-                      key: ValueKey(state.showAnswer),
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          state.currentCard!.frontNote.text,
-                          style: theme.textTheme.bodyLarge,
-                          textAlign: TextAlign.center,
-                        ),
-                        if (state.showAnswer) ...[
-                          const Divider(height: 24),
-                          Text(
-                            state.currentCard!.backNote.text,
-                            style: theme.textTheme.bodyLarge,
-                            textAlign: TextAlign.center,
+                body: Center(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(16),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 50),
+                      child: Column(
+                        key: ValueKey(state.showAnswer),
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Text(
+                          //   state.currentCard!.frontNote.text,
+                          //   style: theme.textTheme.bodyLarge,
+                          //   textAlign: TextAlign.center,
+                          // ),
+                          ReadOnlyRichContent(
+                            key: _frontKey,
+                            state.currentCard!.frontNote.text,
                           ),
+                          if (state.showAnswer) ...[
+                            const Divider(height: 24),
+                            // Text(
+                            //   state.currentCard!.backNote.text,
+                            //   style: theme.textTheme.bodyLarge,
+                            //   textAlign: TextAlign.center,
+                            // ),
+                            ReadOnlyRichContent(
+                              key: _backKey,
+                              state.currentCard!.backNote.text,
+                            ),
+                          ],
                         ],
-                      ],
+                      ),
                     ),
                   ),
                 ),

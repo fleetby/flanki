@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flanki/presentation/app_router.gr.dart';
 import 'package:flanki/presentation/blocs/cards/cards_bloc.dart';
 import 'package:flanki/presentation/blocs/deck/deck_bloc.dart';
+import 'package:flanki/presentation/constants/constants.dart';
 import 'package:flanki/presentation/localizations/app_localizations.dart';
-import 'package:flanki/presentation/widgets/create_card_dialog.dart';
 import 'package:flanki/presentation/widgets/deck_cards_fragment.dart';
 import 'package:flanki/presentation/widgets/deck_settings_fragment.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +62,7 @@ class _DeckBodyState extends State<DeckBody>
             ),
             actions: [
               IconButton(
-                constraints: BoxConstraints.tight(const Size.square(56)),
+                constraints: actionConstraints,
                 onPressed: () {
                   final isDeckEmpty =
                       (context.read<CardsBloc>().state as CardsLoaded?)
@@ -109,14 +109,12 @@ class _DeckBodyState extends State<DeckBody>
           floatingActionButton: _showFab
               ? FloatingActionButton(
                   onPressed: () async {
-                    final result = await showCreateCardDialog(context);
-                    if (context.mounted && result != null) {
-                      context.read<CardsBloc>().add(
-                            CardsCreate(
-                              frontText: result.frontText,
-                              backText: result.backText,
-                            ),
-                          );
+                    final deckId = context
+                        .read<DeckBloc>()
+                        .state
+                        .mapOrNull(loaded: (state) => state.deck.id);
+                    if (deckId != null) {
+                      await CreateCardRoute(deckId: deckId).push<void>(context);
                     }
                   },
                   child: const Icon(PhosphorIconsRegular.plus),
